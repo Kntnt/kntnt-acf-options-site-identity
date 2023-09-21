@@ -5,7 +5,7 @@
  * Plugin Name:       Kntnt Advanced Custom Field Option Page for Site Identity
  * Plugin URI:        https://github.com/Kntnt/kntnt-acf-options-site-identity
  * Description:       Allows ACF to add site identity options to the Appearance menu.
- * Version:           1.0.0
+ * Version:           1.0.1
  * Author:            Thomas Barregren
  * Author URI:        https://www.kntnt.com/
  * License:           GPL-3.0+
@@ -22,7 +22,7 @@ defined( 'ABSPATH' ) || die;
 // is a mu-plugin, we can't use the activation hook to do this.
 add_action( 'init', function () {
 	$admin = get_role( 'administrator' );
-	if ( ! $admin->has_cap( 'kntnt-site-identity' ) ) {
+	if ( isset( $admin ) && ! $admin->has_cap( 'kntnt-site-identity' ) ) {
 		$admin->add_cap( 'kntnt-site-identity' );
 	}
 } );
